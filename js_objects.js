@@ -13,7 +13,7 @@ function Cube(length, mass) {
 function Person(firstName, lastName, bday) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.bday = bday;
+    this.bday = new Date(bday);
     this.sayHi = sayHi;
     this.age = age;
     this.getSign = getSign;
@@ -53,8 +53,41 @@ function age() {
     return years;
 }
 
-function getSign(day, month) {
-    var zodiac = ['', 'Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn'];
-    var last_day = ['', 19, 18, 20, 20, 21, 21, 22, 22, 21, 22, 21, 20, 19];
-    return (day > last_day[month]) ? zodiac[month * 1 + 1] : zodiac[month];
+
+function getSign() {
+    var birth = new Date(this.bday);
+    var year = birth.getFullYear();
+    //91.6% of the time, it works everytime
+
+    if (year % 12 === 0) {
+        return "Monkey 猴!";
+    } else if (year % 12 === 1) {
+        return "Rooster 雞!";
+    } else if (year % 12 === 2) {
+        return "Dog 狗!";
+    } else if (year % 12 === 3) {
+        return "Boar 豬!";
+    } else if (year % 12 === 4) {
+        return "Rat 鼠!";
+    } else if (year % 12 === 5) {
+        return "Ox 牛!";
+    } else if (year % 12 === 6) {
+        return "Tiger 虎!";
+    } else if (year % 12 === 7) {
+        return "Rabbit 兔!";
+    } else if (year % 12 === 8) {
+        return "Dragon 龍!";
+    } else if (year % 12 === 9) {
+        return "Snake 蛇!";
+    } else if (year % 12 === 10) {
+        return "Horse 馬!";
+    } else {
+        return "Ram 羊!";
+    }
 }
+
+//----------------------------------------------------------//
+
+function Pet(name, species) {
+    this.name = name;
+    this.species = species;
