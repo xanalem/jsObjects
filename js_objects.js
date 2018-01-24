@@ -90,4 +90,81 @@ function getSign() {
 
 function Pet(name, species) {
     this.name = name;
-    this.species = species;
+    this.species = species.toLowerCase();
+    this.sleepy = 0;
+    this.hunger = "zero";
+    this.awake = true;
+    this.speak = speak;
+    this.eat = eat;
+    this.nap = nap;
+    this.wakeUp = wakeUp;
+    this.shake = shake;
+    this.rollOver = rollOver;
+    this.fetch = fetch;
+
+    function speak(); {
+        if (this.species == dog) {
+            this.hunger = this.hunger + 1;
+            this.sleepy = this.sleepy + 1;
+            return "Woof! That means I love you!";
+        } else if (this.species == cat) {
+            this.hunger = this.hunger + 1;
+            this.sleepy = this.sleepy + 1;
+            return "Ugh. meow.";
+        }
+    }
+
+
+    function eat() {
+        if (this.species == cat) {
+            this.eat = 0;
+            this.sleepy = this.sleepy + 1;
+            return "Ugh, I guess I'll eat this.";
+        } else if (this.species == dog) {
+            this.eat = 0;
+            this.sleepy = this.sleepy + 1;
+            return "Nom nom nom nom. Yum, thank you for this delicious food! I love you!";
+        }
+
+    }
+
+    function nap() {
+        this.sleepy = 0;
+        this.awake = false;
+        return "Zzzz...";
+    }
+
+    function wakeUp() {
+        if (this.species == cat) {
+            this.awake = true;
+            this.sleepy = 0;
+            this.hunger = 4;
+            return "Ugh, I'm awake now. Is there anything to eat around here?";
+        } else if (this.species == dog) {
+            this.awake = true;
+            this.sleepy = 0;
+            this.hunger = 4;
+            return "I'm awake! Let's eat and then play! I love you!";
+        }
+
+    }
+
+    function fetch() {
+        if (this.awake = false) {
+            return "Zzzz...";
+        } else if (this.species == dog && this.hunger < 4 && this.sleepy < 5) {
+            this.hunger = this.hunger + 1;
+            this.sleepy = this.sleepy + 1;
+            return "Must get the stick! I love you!";
+        } else if (this.species == cat && this.hunger < 4 && this.sleepy < 5) {
+            return "Ugh. I'm a cat. I don't fetch.";
+        } else if (this.species == cat && this.hunger >= 4) {
+            return "Ugh. Feed me before I'll even think about it.";
+        } else if (this.species == dog && this.hunger >= 4) {
+            return "I'm hungry! Let's eat first. I love you!";
+        } else if (this.species == cat && this.sleepy >= 5) {
+            return "Ugh. I need a 12 hour nap first.";
+        } else if (this.species == dog && this.sleepy >= 5) {
+            return "Yawn. Let's play after a nap. I love you!";
+        }
+    }
