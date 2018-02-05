@@ -3,7 +3,7 @@ function Cube(length, mass) {
     this.mass = mass;
     this.volume = Math.pow(length, 3);
     this.density = this.mass / this.volume;
-    this.surfaceArea = Math.pow(length, 2) * length * 2;
+    this.surfaceArea = Math.pow(length, 2) * 6;
 
 }
 
@@ -56,33 +56,33 @@ function age() {
 
 function getSign() {
     var birth = new Date(this.bday);
-    var year = birth.getFullYear();
-    //91.6% of the time, it works everytime
+    var month = birth.getMonth() + 1;
+    var day = birth.getDay();
 
-    if (year % 12 === 0) {
-        return "Monkey 猴!";
-    } else if (year % 12 === 1) {
-        return "Rooster 雞!";
-    } else if (year % 12 === 2) {
-        return "Dog 狗!";
-    } else if (year % 12 === 3) {
-        return "Boar 豬!";
-    } else if (year % 12 === 4) {
-        return "Rat 鼠!";
-    } else if (year % 12 === 5) {
-        return "Ox 牛!";
-    } else if (year % 12 === 6) {
-        return "Tiger 虎!";
-    } else if (year % 12 === 7) {
-        return "Rabbit 兔!";
-    } else if (year % 12 === 8) {
-        return "Dragon 龍!";
-    } else if (year % 12 === 9) {
-        return "Snake 蛇!";
-    } else if (year % 12 === 10) {
-        return "Horse 馬!";
-    } else {
-        return "Ram 羊!";
+    if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
+        return "Capricorn";
+    } else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
+        return "Aquarius";
+    } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+        return "Pisces";
+    } else if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+        return "Aries";
+    } else if ((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
+        return "Taurus";
+    } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+        return "Gemini";
+    } else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
+        return "Cancer";
+    } else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+        return "Leo";
+    } else if ((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
+        return "Virgo";
+    } else if ((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
+        return "Libra";
+    } else if ((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
+        return "Scorpio";
+    } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+        return "Sagittarius";
     }
 }
 
@@ -90,7 +90,7 @@ function getSign() {
 
 function Pet(name, species) {
     this.name = name;
-    this.species = species.toLowerCase();
+    this.species = species;
     this.sleepy = 0;
     this.hunger = 0;
     this.awake = true;
@@ -103,25 +103,25 @@ function Pet(name, species) {
     this.fetch = fetch;
 
     function speak() {
-        if (this.species == "dog") {
+        if (this.species == "Dog") {
             this.hunger = this.hunger + 1;
             this.sleepy = this.sleepy + 1;
             return "Woof! That means I love you!";
-        } else if (this.species == "cat") {
+        } else if (this.species == "Cat") {
             this.hunger = this.hunger + 1;
             this.sleepy = this.sleepy + 1;
-            return "Ugh. meow.";
+            return "Ugh. Meow.";
         }
     }
 
 
     function eat() {
-        if (this.species == "cat") {
+        if (this.species == "Cat") {
             this.hunger = 0;
             this.sleepy = this.sleepy + 1;
-            return "Ugh. I guess I'll eat this.";
-        } else if (this.species == "dog") {
-            this.eat = 0;
+            return "Ugh, I guess I'll eat this.";
+        } else if (this.species == "Dog") {
+            this.hunger = 0;
             this.sleepy = this.sleepy + 1;
             return "Nom nom nom nom. Yum, thank you for this delicious food! I love you!";
         }
@@ -135,12 +135,12 @@ function Pet(name, species) {
     }
 
     function wakeUp() {
-        if (this.species == "cat") {
+        if (this.species == "Cat") {
             this.awake = true;
             this.sleepy = 0;
             this.hunger = 4;
             return "Ugh, I'm awake now. Is there anything to eat around here?";
-        } else if (this.species == "dog") {
+        } else if (this.species == "Dog") {
             this.awake = true;
             this.sleepy = 0;
             this.hunger = 4;
@@ -153,19 +153,19 @@ function Pet(name, species) {
 
         if (this.awake == false) {
             return "Zzzz..."
-        } else if (this.species == "dog" && this.sleepy < 5 && this.hunger < 4) {
+        } else if (this.species == "Dog" && this.sleepy < 5 && this.hunger < 4) {
             this.hunger = this.hunger + 1;
             this.sleepy = this.sleepy + 1;
             return "Nice to meet you!I love you!";
-        } else if (this.species == dog && this.sleepy >= 5) {
+        } else if (this.species == Dog && this.sleepy >= 5) {
             return "Yawn. Let's play after a nap. I love you!";
-        } else if (this.species == "dog" && this.hunger >= 4) {
+        } else if (this.species == "Dog" && this.hunger >= 4) {
             return "I'm hungry! Let's eat first. I love you!";
-        } else if (this.species == "cat" && this.sleepy < 5 && this.hunger < 4) {
+        } else if (this.species == "Cat" && this.sleepy < 5 && this.hunger < 4) {
             return "Ugh. I'm a cat. I never shake";
-        } else if (this.species == "cat" && this.sleepy >= 5) {
+        } else if (this.species == "Cat" && this.sleepy >= 5) {
             return "Ugh. I need a 12 hour nap first.";
-        } else if (this.species == "cat" && this.hunger >= 4) {
+        } else if (this.species == "Cat" && this.hunger >= 4) {
             return "Ugh. Feed me before I 'll even think about it.";
         }
 
@@ -175,19 +175,19 @@ function Pet(name, species) {
 
         if (this.awake == false) {
             return "Zzzz..."
-        } else if (this.species == "dog" && this.sleepy < 5 && this.hunger < 4) {
+        } else if (this.species == "Dog" && this.sleepy < 5 && this.hunger < 4) {
             this.hunger = this.hunger + 1;
             this.sleepy = this.sleepy + 1;
             return "Rolling! Now what? I love you!";
-        } else if (this.species == "dog" && this.sleepy >= 5) {
+        } else if (this.species == "Dog" && this.sleepy >= 5) {
             return "Yawn. Let's play after a nap. I love you!";
-        } else if (this.species == "dog" && this.hunger >= 4) {
+        } else if (this.species == "Dog" && this.hunger >= 4) {
             return "I'm hungry! Let's eat first. I love you!";
         } else if (this.species == "cat" && this.sleepy < 5 && this.hunger < 4) {
             return "Ugh. I'm a cat. I only roll over if I want to.";
-        } else if (this.species == "cat" && this.sleepy >= 5) {
+        } else if (this.species == "Cat" && this.sleepy >= 5) {
             return "Ugh. I need a 12 hour nap first.";
-        } else if (this.species == "cat" && this.hunger >= 4) {
+        } else if (this.species == "Cat" && this.hunger >= 4) {
             return "Ugh. Feed me before I 'll even think about it.";
         }
 
@@ -197,19 +197,19 @@ function Pet(name, species) {
 
         if (this.awake == false) {
             return "Zzzz...";
-        } else if (this.species == "dog" && this.hunger < 4 && this.sleepy < 5) {
+        } else if (this.species == "Dog" && this.hunger < 4 && this.sleepy < 5) {
             this.hunger = this.hunger + 1;
             this.sleepy = this.sleepy + 1;
             return "Must get the stick! I love you!";
-        } else if (this.species == "cat" && this.hunger < 4 && this.sleepy < 5) {
+        } else if (this.species == "Cat" && this.hunger < 4 && this.sleepy < 5) {
             return "Ugh. I'm a cat. I don't fetch.";
-        } else if (this.species == "cat" && this.hunger >= 4) {
+        } else if (this.species == "Cat" && this.hunger >= 4) {
             return "Ugh. Feed me before I'll even think about it.";
-        } else if (this.species == "dog" && this.hunger >= 4) {
+        } else if (this.species == "Dog" && this.hunger >= 4) {
             return "I'm hungry! Let's eat first. I love you!";
-        } else if (this.species == "cat" && this.sleepy >= 5) {
+        } else if (this.species == "Cat" && this.sleepy >= 5) {
             return "Ugh. I need a 12 hour nap first.";
-        } else if (this.species == "dog" && this.sleepy >= 5) {
+        } else if (this.species == "Dog" && this.sleepy >= 5) {
             return "Yawn. Let's play after a nap. I love you!";
         }
     }
